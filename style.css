@@ -3,7 +3,6 @@
 ========================= */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 
 /* =========================
    ROOT VARIABLES
@@ -54,7 +53,7 @@ body {
 header {
   position: relative;
   height: 30vh;
-  background-color: var(--dark-overlay);
+  background-color: #00000044;
 
   background-position: bottom;
   display: flex;
@@ -73,7 +72,7 @@ header div {
 header img {
   width: 100px;
 
-  margin-bottom: 0.25rem;
+  margin-bottom: 0rem;
 }
 
 /* Main Heading */
@@ -201,16 +200,17 @@ section.timeline {
 .timeline-card h3 {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  color: #00C7FD;
 }
 
 .timeline-card h2 {
   font-size: 6rem;
+  color: #0b83df;
 }
 
 .timeline-card h3 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  color: #00C7FD;
 }
 
 .timeline-card p {
@@ -309,7 +309,7 @@ section.timeline {
   text-align: center;
   margin: 1rem auto 4rem;
   font-size: 0.95rem;
-  color: #fff;
+  color: #00C7FD;
   max-width: 100%;
 
   letter-spacing: 0.04em;
