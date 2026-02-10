@@ -6,6 +6,13 @@
   <title>Intel: Sustainability Through the Ages</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
+<script>
+  window.addEventListener('load', () => {
+    const timeline = document.querySelector('.timeline');
+    if (timeline) timeline.scrollLeft = 0;
+  });
+</script>
 <body>
 
   <!-- Header / Hero Section -->
@@ -28,8 +35,16 @@
 
   <!--Site-->
   <div class="site">
+
+  <div class="timeline-progress">
+  <span></span>
+</div>
   <!--Timeline-->
-  <section class="timeline">
+  <div class="timeline-wrapper">
+    <button class="timeline-arrow left" aria-label="Scroll timeline left">
+     &#10094;
+    </button>
+    <section class="timeline">
     <!-- Card 1: 1968 -->
     <div class="timeline-card card-1">
       <h2>1968</h2>
@@ -137,6 +152,10 @@
       </p>
     </div>
   </section>
+  
+  <button class="timeline-arrow right" aria-label="Scroll timeline right">
+    &#10095;
+  </button>
   </div>
   <!--Instructions-->
   <p class="timeline-instruction">
