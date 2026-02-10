@@ -1,0 +1,188 @@
+/* =========================
+   FONT IMPORTS
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap');
+
+/* =========================
+   ROOT VARIABLES
+========================= */
+:root {
+  --intel-blue: #003c71;
+  --dark-overlay: rgba(0, 0, 0, 0.25);
+  --light-bg: #f5f7fa;
+  --text-dark: #111;
+  --text-muted: #555;
+}
+
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* =========================
+   HEADER / HERO
+========================= */
+header {
+  position: relative;
+  height: 100vh;
+  background: 
+    linear-gradient(var(--dark-overlay), var(--dark-overlay)),
+    url("img/header-bg.jpg") center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+header div {
+  max-width: 900px;
+  padding: 2rem;
+  color: #fff;
+}
+
+/* Intel logo */
+header img {
+  width: 120px;
+  margin-bottom: 2rem;
+}
+
+/* Main Heading */
+header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Subheading */
+header p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* =========================
+   TIMELINE SECTION
+========================= */
+section {
+  padding: 6rem 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* =========================
+   TIMELINE CARD
+========================= */
+section > div {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 420px;
+  background: url("img/timeline-placeholder.jpg") center / cover no-repeat;
+  border-radius: 18px;
+  overflow: hidden;
+
+  /* Scroll animation */
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp linear forwards;
+  animation-timeline: view();
+  animation-range: entry 20% cover 40%;
+}
+
+/* Dark overlay */
+section > div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--dark-overlay);
+  z-index: 1;
+}
+
+/* =========================
+   CARD CONTENT OVERLAY
+========================= */
+section > div > * {
+  position: relative;
+  z-index: 2;
+}
+
+section > div {
+  padding: 2.5rem;
+}
+
+/* Year + Title */
+section h2,
+section h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--intel-blue);
+}
+
+section h2 {
+  font-size: 2rem;
+}
+
+section h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Description */
+section p {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: #000;
+  max-width: 520px;
+}
+
+/* =========================
+   SCROLL FADE ANIMATION
+========================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   FOOTER TEXT
+========================= */
+body > p {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  section > div {
+    padding: 2rem;
+    min-height: 360px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+}
