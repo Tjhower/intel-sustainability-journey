@@ -28,25 +28,33 @@
 }
 
 body {
+  position: relative;
+  height: 30vh;
+  background: 
+    linear-gradient(var(--dark-overlay), var(--dark-overlay)),
+    url("img/header-background.jpg") center / cover no-repeat;
+  background-attachment: fixed;
+  
   font-family: 'Inter', sans-serif;
-  background-color: var(--light-bg);
+  background-color: #0068B5;
   color: var(--text-dark);
   line-height: 1.6;
 }
+
+.site {
+  max-width: 3000px;
+  margin: 0 auto;
+  padding: 0 4vw;
+}
+
 
 /* =========================
    HEADER / HERO
 ========================= */
 header {
   position: relative;
-
-
-
-  height: 60vh;
-  background: 
-    linear-gradient(var(--dark-overlay), var(--dark-overlay)),
-    url("img/header-background.jpg") center / cover no-repeat;
-  background-attachment: fixed;
+  height: 30vh;
+  background-color: rgba(0, 0, 0, 0.65);
 
   background-position: bottom;
   display: flex;
@@ -57,22 +65,23 @@ header {
 
 header div {
   max-width: 900px;
-  padding: 2rem;
+  padding: 1rem;
   color: #fff;
 }
 
 /* Intel logo */
 header img {
-  width: 140px;
+  width: 100px;
 
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 /* Main Heading */
 header h1 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(3.75rem, 7.5vw, 5rem);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: clamp(3rem, 5vw, 3rem);
   font-weight: 600;
+  color: #fff;
 
   font-style: bold;
   margin-bottom: 1rem;
@@ -80,56 +89,68 @@ header h1 {
 
 /* Subheading */
 header p {
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1.1rem;
-  max-width: 700px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5rem;
+  max-width: 1000px;
   margin: 0 auto;
   opacity: 0.9;
 }
 
 /* =========================
-   TIMELINE SECTION
+   TIMELINE SECTION (HORIZONTAL)
 ========================= */
-section {
-  padding: 6rem 5%;
+section.timeline {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 4rem;
+  justify-content: center; /* centers cards when they don't overflow */
+
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  padding: 1rem 5%;
+}
+
+section.timeline::-webkit-scrollbar {
+  display: none;
+}
+section.timeline {
+  scrollbar-width: none;
 }
 
 /* =========================
    TIMELINE CARD
 ========================= */
-/*Base card styles*/
 .timeline-card {
+  flex: 0 0 90vw;              /* REQUIRED for horizontal scroll */
+  min-height: 60vh;
+
   position: relative;
-  min-height: 800px;
-  padding: 2.5rem;
   border-radius: 18px;
   overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
+  scroll-snap-align: center;
   cursor: pointer;
 
-  /* Scroll Animation */
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeInUp linear forwards;
-  animation-timeline: view();
-  animation-range: entry 20% cover 40%;
-}
-.timeline-card:hover {
-  background-size: 110%;
+  /* CENTER TEXT */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-/* Dark overlay */
+/* =========================
+   OVERLAY (does NOT affect text)
+========================= */
 .timeline-card::before {
   content: "";
   position: absolute;
@@ -142,21 +163,25 @@ section {
 .timeline-card:hover::before {
   background: var(--overlay-dark);
 }
+
 /* =========================
    TEXT OVERLAY BEHAVIOR
 ========================= */
 .timeline-card h2,
-.timeline-card h3 {
-  color: #ffffff;
-}
+.timeline-card h3,
 .timeline-card p {
+  position: relative;
+  z-index: 2;
+
   opacity: 0;
   transform: translateY(20px);
-  transition:
-  opacity 0.4s ease,
-  transform 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+
+  color: white;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
-/*Reveal text on hover*/
+
+/* Reveal on hover */
 .timeline-card:hover h2,
 .timeline-card:hover h3,
 .timeline-card:hover p {
@@ -164,10 +189,10 @@ section {
   transform: translateY(0);
 }
 
-/*Staggered reveal*/
-.timeline-card h2 {transition-delay: 0.05s;}
-.timeline-card h3 {transition-delay: 0.1s;}
-.timeline-card p {transition-delay: 0.15s;}
+/* Stagger */
+.timeline-card h2 { transition-delay: 0.05s; }
+.timeline-card h3 { transition-delay: 0.1s; }
+.timeline-card p  { transition-delay: 0.15s; }
 
 /* =========================
    CARD TYPOGRAPHY
@@ -176,23 +201,22 @@ section {
 .timeline-card h3 {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  color: var(--intel-blue);
+  color: #00C7FD;
 }
 
 .timeline-card h2 {
-  font-size: 2rem;
+  font-size: 6rem;
 }
 
 .timeline-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.75rem;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .timeline-card p {
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 520px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2rem;
+  max-width: 70ch;
 }
 
 /* =========================
@@ -225,13 +249,16 @@ section {
 /* =========================
    FOOTER TEXT
 ========================= */
-body > p {
+.timeline-instruction {
   text-align: center;
-  padding: 3rem 1rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
+  margin: 1rem auto 4rem;
+  font-size: 0.95rem;
+  color: #fff;
+  max-width: 100%;
 
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 /* =========================
    RESPONSIVE
 ========================= */
