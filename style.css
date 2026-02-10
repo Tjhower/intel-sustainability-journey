@@ -3,8 +3,6 @@
 ========================= */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
-
 /* =========================
    ROOT VARIABLES
 ========================= */
@@ -53,7 +51,7 @@ body {
 header {
   position: relative;
   height: 30vh;
-  background-color: var(--dark-overlay);
+  background-color: #0067b586;
 
   background-position: bottom;
   display: flex;
@@ -305,7 +303,7 @@ section.timeline {
   text-align: center;
   margin: 1rem auto 4rem;
   font-size: 0.95rem;
-  color: #fff;
+  color: #00C7FD;
   max-width: 100%;
 
   letter-spacing: 0.04em;
